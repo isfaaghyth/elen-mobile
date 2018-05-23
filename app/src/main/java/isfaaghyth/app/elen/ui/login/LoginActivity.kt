@@ -1,6 +1,5 @@
 package isfaaghyth.app.elen.ui.login
 
-import android.util.Log
 import isfaaghyth.app.elen.R
 import isfaaghyth.app.elen.base.BaseActivity
 
@@ -13,7 +12,7 @@ class LoginActivity: BaseActivity() {
     override fun layoutView(): Int = R.layout.activity_login
 
     override fun contentCreated() {
-        Log.d("TAG", "Test")
+
     }
 
 }
