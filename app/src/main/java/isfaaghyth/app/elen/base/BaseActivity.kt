@@ -8,15 +8,18 @@ import android.support.v7.app.AppCompatActivity
  * Created by isfaaghyth on 5/23/18.
  * github: @isfaaghyth
  */
-abstract class BaseActivity<V>: AppCompatActivity(), BaseView {
+abstract class BaseActivity: AppCompatActivity(), BaseView {
 
-    private var view: V ? = null
-    protected abstract fun contentView(): V
+    protected abstract fun layoutView(): Int
     protected abstract fun contentCreated()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.view = contentView()
+        contentView(layoutView())
+    }
+
+    private fun contentView(layout: Int) {
+        setContentView(layout)
         contentCreated()
     }
 
