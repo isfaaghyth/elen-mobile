@@ -5,4 +5,5 @@ package isfaaghyth.app.elen.network
  * github: @isfaaghyth
  */
 interface Routes {
+
 }
