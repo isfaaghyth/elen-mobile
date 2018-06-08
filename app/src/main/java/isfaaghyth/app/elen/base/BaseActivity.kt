@@ -3,7 +3,6 @@ package isfaaghyth.app.elen.base
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import dagger.android.AndroidInjection
 
 /**
  * Created by isfaaghyth on 5/23/18.
@@ -14,12 +13,9 @@ abstract class BaseActivity: AppCompatActivity(), BaseView {
     protected abstract fun layoutView(): Int
     protected abstract fun contentCreated()
 
-    private fun performDI() = AndroidInjection.inject(this)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         contentView(layoutView())
-        performDI()
     }
 
     private fun contentView(layout: Int) {
