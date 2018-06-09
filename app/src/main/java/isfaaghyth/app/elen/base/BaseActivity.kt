@@ -3,6 +3,7 @@ package isfaaghyth.app.elen.base
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 /**
  * Created by isfaaghyth on 5/23/18.
@@ -22,6 +23,9 @@ abstract class BaseActivity: AppCompatActivity(), BaseView {
         setContentView(layout)
         contentCreated()
     }
+
+    override fun attachBaseContext(newBase: Context?) =
+            super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
 
     override fun context(): Context = applicationContext
 

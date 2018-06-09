@@ -1,11 +1,60 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/grey</item>
+        <item name="colorPrimaryDark">@color/greyBar</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Detail" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/greyBar</item>
+        <item name="colorPrimaryDark">@color/greyBar</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="AppTheme.Login" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/greyBar</item>
+    </style>
+
+    <style name="FabStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">35dp</item>
+        <item name="android:layout_marginEnd">35dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="borderWidth">0dp</item>
+        <item name="elevation">6dp</item>
+        <item name="pressedTranslationZ">12dp</item>
+        <item name="rippleColor">@android:color/white</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Theme.AppCompat">
+        <item name="colorButtonNormal">@color/appAccent</item>
+        <item name="colorControlHighlight">@color/appAccentDark</item>
+    </style>
+
+    <style name="NegativeButton" parent="Theme.AppCompat">
+        <item name="colorButtonNormal">@color/white</item>
+        <item name="colorControlHighlight">@color/grey_300</item>
+        <item name="android:textColor">@color/appAccent</item>
+    </style>
+
+    <style name="EdittextLine">
+        <item name="colorControlNormal">@color/grey_500</item>
+        <item name="colorControlActivated">@color/appPrimary</item>
     </style>
 
 </resources>
