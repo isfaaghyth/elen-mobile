@@ -5,6 +5,7 @@ package isfaaghyth.app.elen.base
  * github: @isfaaghyth
  */
 interface BasePresenter<V> {
+    fun logOut()
     fun attachView(view: V)
     fun dettachView()
     fun view(): V

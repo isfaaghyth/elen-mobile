@@ -2,6 +2,8 @@ package isfaaghyth.app.elen.ui.login
 
 import android.content.Intent
 import android.util.Log
+import com.google.gson.Gson
+import io.isfaaghyth.rak.Rak
 import io.reactivex.disposables.CompositeDisposable
 import isfaaghyth.app.elen.R
 import isfaaghyth.app.elen.base.BaseActivity
@@ -21,19 +23,28 @@ class LoginActivity: BaseActivity(), LoginView {
     override fun layoutView(): Int = R.layout.activity_login
     lateinit var presenter: LoginPresenter
 
+    private var username = ""
+    private var password = ""
+
     override fun contentCreated() {
         presenter = LoginPresenterImp(Network.builder.create(Routes::class.java), CompositeDisposable(), this)
+        presenter.isLogin()
         btnLogin.setOnClickListener {
-            presenter.doLogin(edtNim.text.toString(), edtPassword.text.toString())
+            username = edtNim.text.toString()
+            password = edtPassword.text.toString()
+            presenter.doLogin(username, password)
         }
     }
 
     override fun success(courses: Courses) {
-        var test = ""
-        for (i: Course in courses.data) {
-            test = test + i.course_name + "\n"
-        }
-        txtTitle.text = test
+        Rak.entry("username", username)
+        Rak.entry("password", password)
+        Rak.entry("login", true)
+        Rak.entry("res", Gson().toJson(courses))
+        gotoMain()
+    }
+
+    override fun gotoMain() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }

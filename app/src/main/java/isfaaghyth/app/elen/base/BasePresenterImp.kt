@@ -1,5 +1,6 @@
 package isfaaghyth.app.elen.base
 
+import io.isfaaghyth.rak.Rak
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import isfaaghyth.app.elen.network.Routes
@@ -27,6 +28,10 @@ open class BasePresenterImp<V: BaseView>
 
     protected fun subscribe(disposable: Disposable?) {
         compositeDisposable?.add(disposable)
+    }
+
+    override fun logOut() {
+        Rak.entry("login", false)
     }
 
     protected fun reqError(error: Throwable?) {

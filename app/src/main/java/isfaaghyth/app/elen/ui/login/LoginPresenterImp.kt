@@ -1,6 +1,7 @@
 package isfaaghyth.app.elen.ui.login
 
 import android.util.Log
+import io.isfaaghyth.rak.Rak
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -16,6 +17,13 @@ class LoginPresenterImp internal constructor(routes: Routes, disposable: Composi
 
     init {
         super.attachView(view)
+    }
+
+    override fun isLogin() {
+        if (!Rak.isExist("login")) return
+        if (Rak.grab("login")) {
+            view().gotoMain()
+        }
     }
 
     override fun doLogin(username: String, password: String) = subscribe(

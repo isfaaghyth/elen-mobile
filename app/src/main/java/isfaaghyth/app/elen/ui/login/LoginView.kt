@@ -9,4 +9,5 @@ import isfaaghyth.app.elen.data.Courses
  */
 interface LoginView: BaseView {
     fun success(courses: Courses)
+    fun gotoMain()
 }
