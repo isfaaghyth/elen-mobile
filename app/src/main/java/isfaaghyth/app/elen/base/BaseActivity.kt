@@ -3,6 +3,7 @@ package isfaaghyth.app.elen.base
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 /**
@@ -38,11 +39,11 @@ abstract class BaseActivity: AppCompatActivity(), BaseView {
     }
 
     override fun onError(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.e("TAG", message)
     }
 
     override fun onError(resId: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        onError(getString(resId))
     }
 
     override fun isNetworkConnected(): Boolean {

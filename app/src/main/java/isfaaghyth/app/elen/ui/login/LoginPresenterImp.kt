@@ -11,20 +11,20 @@ import isfaaghyth.app.elen.network.Routes
  * Created by isfaaghyth on 5/24/18.
  * github: @isfaaghyth
  */
-class LoginPresenterImp internal constructor(routes: Routes, disposable: CompositeDisposable)
+class LoginPresenterImp internal constructor(routes: Routes, disposable: CompositeDisposable, view: LoginView)
     : BasePresenterImp<LoginView>(service = routes, compositeDisposable = disposable), LoginPresenter {
 
     init {
-        super.attachView(view())
+        super.attachView(view)
     }
 
     override fun doLogin(username: String, password: String) = subscribe(
             service?.login(username, password)
-                    ?.observeOn(Schedulers.io())
-                    ?.subscribeOn(AndroidSchedulers.mainThread())
+                    ?.subscribeOn(Schedulers.io())
+                    ?.observeOn(AndroidSchedulers.mainThread())
                     ?.subscribe(
-                            { res -> view.success(res) },
-                            { err -> Log.d("TAG", err.message) }
+                            { res -> view().success(res) },
+                            { err -> reqError(err) }
                     )
     )
 

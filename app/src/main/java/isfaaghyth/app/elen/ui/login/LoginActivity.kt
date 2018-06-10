@@ -22,16 +22,18 @@ class LoginActivity: BaseActivity(), LoginView {
     lateinit var presenter: LoginPresenter
 
     override fun contentCreated() {
-        presenter = LoginPresenterImp(Network.builder.create(Routes::class.java), CompositeDisposable())
+        presenter = LoginPresenterImp(Network.builder.create(Routes::class.java), CompositeDisposable(), this)
         btnLogin.setOnClickListener {
             presenter.doLogin(edtNim.text.toString(), edtPassword.text.toString())
         }
     }
 
     override fun success(courses: Courses) {
+        var test = ""
         for (i: Course in courses.data) {
-            Log.d("TAG", i.course_name)
+            test = test + i.course_name + "\n"
         }
+        txtTitle.text = test
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
