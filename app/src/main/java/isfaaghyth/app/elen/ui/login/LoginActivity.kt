@@ -20,15 +20,19 @@ import kotlinx.android.synthetic.main.activity_login.*
  */
 class LoginActivity: BaseActivity(), LoginView {
 
-    override fun layoutView(): Int = R.layout.activity_login
-    lateinit var presenter: LoginPresenter
-
+    private lateinit var presenter: LoginPresenter
     private var username = ""
     private var password = ""
 
+    override fun layoutView(): Int = R.layout.activity_login
+
     override fun contentCreated() {
-        presenter = LoginPresenterImp(Network.builder.create(Routes::class.java), CompositeDisposable(), this)
+        presenter = LoginPresenterImp(
+                Network.builder.create(Routes::class.java),
+                CompositeDisposable(), this)
+
         presenter.isLogin()
+
         btnLogin.setOnClickListener {
             username = edtNim.text.toString()
             password = edtPassword.text.toString()
