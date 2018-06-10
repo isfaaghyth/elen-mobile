@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 27
@@ -14,6 +15,9 @@ android {
 
         //generalString
         buildConfigField("String", "MAIN_URL", "\"http://elenf.herokuapp.com/\"")
+
+        //dataBinding
+        dataBinding.enabled = true
     }
 
     buildTypes {
@@ -38,6 +42,7 @@ dependencies {
     //databinding
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    annotationProcessor 'com.android.databinding:compiler:2.3.0'
 
     //google play services
     compile 'com.google.android.gms:play-services-auth:11.8.0'
