@@ -1,6 +1,9 @@
 package isfaaghyth.app.elen.ui.login
 
+import android.util.Log
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import isfaaghyth.app.elen.base.BasePresenterImp
 import isfaaghyth.app.elen.network.Routes
 
@@ -14,5 +17,15 @@ class LoginPresenterImp internal constructor(routes: Routes, disposable: Composi
     init {
         super.attachView(view())
     }
+
+    override fun doLogin(username: String, password: String) = subscribe(
+            service?.login(username, password)
+                    ?.observeOn(Schedulers.io())
+                    ?.subscribeOn(AndroidSchedulers.mainThread())
+                    ?.subscribe(
+                            { res -> view.success(res) },
+                            { err -> Log.d("TAG", err.message) }
+                    )
+    )
 
 }

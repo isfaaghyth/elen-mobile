@@ -7,5 +7,5 @@ import isfaaghyth.app.elen.base.BasePresenter
  * github: @isfaaghyth
  */
 interface LoginPresenter: BasePresenter<LoginView> {
-
+    fun doLogin(username: String, password: String)
 }
