@@ -1,6 +1,9 @@
 package isfaaghyth.app.elen.ui.coursedetail
 
+import isfaaghyth.app.elen.R
 import isfaaghyth.app.elen.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_course_detail.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 /**
  * Created by isfaaghyth on 6/10/18.
@@ -8,12 +11,10 @@ import isfaaghyth.app.elen.base.BaseActivity
  */
 class CourseDetailActivity: BaseActivity(), CourseDetailView {
 
-    override fun layoutView(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun layoutView(): Int = R.layout.activity_course_detail
 
     override fun contentCreated() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showBackPassedButton(toolbar)
     }
-    
+
 }
