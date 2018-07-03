@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
+import de.mateware.snacky.Snacky
+import isfaaghyth.app.elen.util.ProgressLoader
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 /**
@@ -49,16 +51,19 @@ abstract class BaseActivity: AppCompatActivity(), BaseView {
     override fun context(): Context = applicationContext
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        ProgressLoader(this).show()
     }
 
     override fun hideLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        ProgressLoader(this).hide()
     }
 
-    override fun onError(message: String) {
-        Log.e("TAG", message)
-    }
+    override fun onError(message: String) = Snacky.builder()
+            .setActivity(this)
+            .setText(message)
+            .setDuration(Snacky.LENGTH_SHORT)
+            .error()
+            .show()
 
     override fun onError(resId: Int) {
         onError(getString(resId))

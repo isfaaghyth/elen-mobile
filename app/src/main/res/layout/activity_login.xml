@@ -73,9 +73,9 @@
                 android:id="@+id/edtNim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="NIM"
+                android:hint="Username"
                 android:textSize="16sp"
-                android:inputType="number"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@android:color/black"
                 android:theme="@style/EdittextLine"/>

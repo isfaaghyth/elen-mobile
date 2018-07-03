@@ -26,14 +26,25 @@ class LoginPresenterImp internal constructor(routes: Routes, disposable: Composi
         }
     }
 
-    override fun doLogin(username: String, password: String) = subscribe(
-            service?.login(username, password)
-                    ?.subscribeOn(Schedulers.io())
-                    ?.observeOn(AndroidSchedulers.mainThread())
-                    ?.subscribe(
-                            { res -> view().success(res) },
-                            { err -> reqError(err) }
-                    )
-    )
+    override fun doLogin(username: String, password: String) {
+        if (username.isEmpty() || password.isEmpty()) return
+        view().showLoading()
+        subscribe(
+                service?.login(username, password)
+                        ?.subscribeOn(Schedulers.io())
+                        ?.observeOn(AndroidSchedulers.mainThread())
+                        ?.subscribe(
+                                { res ->
+                                    run {
+                                        view().success(res)
+                                        view().hideLoading()
+                                    }
+                                },
+                                { err -> run {
+                                    reqError(err)
+                                    view().hideLoading()
+                                } }
+                        ))
+    }
 
 }
