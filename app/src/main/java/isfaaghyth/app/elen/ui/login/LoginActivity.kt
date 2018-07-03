@@ -34,10 +34,10 @@ class LoginActivity: BaseActivity(), LoginView {
         presenter.isLogin()
 
         btnLogin.setOnClickListener {
+            username = edtNim.text.toString()
+            password = edtPassword.text.toString()
             if (!username.isEmpty()) {
                 if (!password.isEmpty()) {
-                    username = edtNim.text.toString()
-                    password = edtPassword.text.toString()
                     presenter.doLogin(username, password)
                 } else {
                     onError("Password anda masih kosong.")
